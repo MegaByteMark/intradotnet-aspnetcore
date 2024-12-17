@@ -1,7 +1,7 @@
 using System.DirectoryServices.AccountManagement;
 using Microsoft.AspNetCore.Authorization;
 
-namespace IntraDotNet.Windows.Server.Authorization.WindowsGroupMembership
+namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership
 {
     /// <summary>
     /// Represents a requirement for Windows group membership authorization.

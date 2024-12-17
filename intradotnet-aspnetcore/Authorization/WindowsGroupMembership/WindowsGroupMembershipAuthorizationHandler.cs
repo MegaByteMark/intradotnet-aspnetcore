@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
-namespace IntraDotNet.Windows.Server.Authorization.WindowsGroupMembership
+namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership
 {
     /// <summary>
     /// Authorization handler that checks if a user is a member of a specified Windows group.

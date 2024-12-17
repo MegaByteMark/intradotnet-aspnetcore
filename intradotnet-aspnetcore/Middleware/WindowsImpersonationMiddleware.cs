@@ -1,4 +1,4 @@
-﻿namespace IntraDotNet.Windows.Server.Middleware
+﻿namespace IntraDotNet.AspNetCore.Middleware
 {
     using Microsoft.AspNetCore.Http;
     using System.Security.Principal;

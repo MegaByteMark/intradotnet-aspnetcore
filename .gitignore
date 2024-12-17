@@ -399,5 +399,5 @@ FodyWeavers.xsd
 
 
 # Application Generated Files
-intradotnet-windows-server/bin
-intradotnet-windows-server/obj
+intradotnet-aspnetcore/bin
+intradotnet-aspnetcore/obj

@@ -1,4 +1,4 @@
-namespace IntraDotNet.Windows.Server.Authorization.WindowsGroupMembership
+namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership
 {
     /// <summary>
     /// Represents a policy for Windows group membership authorization.

@@ -1,4 +1,4 @@
-# IntraDotNet.Windows.Server
+# IntraDotNet.AspNetCore
 
 ASP.NET Core polyfill for enabling Windows features when targeting a Windows intranet environment.
 
@@ -16,7 +16,7 @@ This library provides middleware and authorization handlers to enable Windows-sp
 To install the library, add the following NuGet package to your project:
 
 ```bash
-dotnet add package IntraDotNet.Windows.Server
+dotnet add package IntraDotNet.AspNetCore
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ dotnet add package IntraDotNet.Windows.Server
 
 To use the Windows Impersonation Middleware, add it to the middleware pipeline in the Program.cs file:
 ```csharp
-using IntraDotNet.Windows.Server.Middleware;
+using IntraDotNet.AspNetCore.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -70,7 +70,7 @@ To use Windows Group Membership Authorization, configure the authorization polic
 
 #### Program.cs
 ```csharp
-using IntraDotNet.Windows.Server.Authorization.WindowsGroupMembership.DependencyInjection;
+using IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

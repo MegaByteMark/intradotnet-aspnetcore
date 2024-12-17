@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 
-namespace IntraDotNet.Windows.Server.Authorization.WindowsGroupMembership.DependencyInjection;
+namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.DependencyInjection;
 
 /// <summary>
 /// Extension methods for setting up Windows group membership authorization services in an <see cref="IServiceCollection"/>.
