@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+
+# Application Generated Files
+intradotnet-windows-server/bin
+intradotnet-windows-server/obj
