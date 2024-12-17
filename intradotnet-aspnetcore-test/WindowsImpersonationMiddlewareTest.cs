@@ -8,7 +8,7 @@ namespace IntraDotNet.AspNetCore.Middleware.Tests
 {
     public class WindowsImpersonationMiddlewareTest
     {
-        [Fact]
+        [Fact(Skip = "Cannot auth with LDAP in GitHub Actions")]
         public async Task InvokeAsync_WithWindowsIdentity_RunsImpersonated()
         {
             //If the platform is not windows fail

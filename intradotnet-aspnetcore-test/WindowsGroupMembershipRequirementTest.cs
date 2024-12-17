@@ -23,7 +23,7 @@ namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.Tests
 
             // Act
             //Currently can't run LDAP queries in a github actions environment
-            var requirement = Substitute.For<WindowsGroupMembershipRequirement>();
+            var requirement = Substitute.For<WindowsGroupMembershipRequirement>(groupNames);
             requirement.GroupNames.Returns(groupNames);
 
             // Assert
@@ -45,7 +45,7 @@ namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.Tests
 
             // Act
             //Currently can't run LDAP queries in a github actions environment
-            var requirement = Substitute.For<WindowsGroupMembershipRequirement>();
+            var requirement = Substitute.For<WindowsGroupMembershipRequirement>(groupNames);
             requirement.GroupNames.Returns(groupNames);
             requirement.GroupSids.Returns(new List<string>());
 
@@ -69,7 +69,7 @@ namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.Tests
             var groupSids = new List<string> { "S-1-5-32-544", "S-1-5-32-545" };
             
             //Currently can't run LDAP queries in a github actions environment
-            var requirement = Substitute.For<WindowsGroupMembershipRequirement>();
+            var requirement = Substitute.For<WindowsGroupMembershipRequirement>(groupNames);
             requirement.GroupNames.Returns(groupNames);
             requirement.GroupSids.Returns(groupSids);
 
