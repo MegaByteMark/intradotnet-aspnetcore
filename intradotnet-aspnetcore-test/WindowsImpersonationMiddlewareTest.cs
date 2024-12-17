@@ -24,7 +24,7 @@ namespace IntraDotNet.AspNetCore.Middleware.Tests
 
             var context = Substitute.For<HttpContext>();
             var user = Substitute.For<ClaimsPrincipal>();
-            var windowsIdentity = Substitute.For<WindowsIdentity>("TestDomain\\TestUser");
+            var windowsIdentity = Substitute.For<WindowsIdentity>("SYSTEM");
 
             user.Identity.Returns(windowsIdentity);
             context.User.Returns(user);
@@ -91,7 +91,7 @@ namespace IntraDotNet.AspNetCore.Middleware.Tests
             await next.Received(1).Invoke(context);
         }
 
-        [Fact]
+       [Fact]
         public async Task InvokeAsync_NullUser_CallsNext()
         {
             //If the platform is not windows fail

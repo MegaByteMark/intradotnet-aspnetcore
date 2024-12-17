@@ -7,7 +7,7 @@ namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.Tests
 {
     public class WindowsGroupMembershipAuthorizationHandlerTest
     {
-        [Fact]
+        [Fact(Skip = "Cannot auth with LDAP in GitHub Actions")]
         public async Task HandleRequirementAsync_UserInGroup_Succeeds()
         {
             //if the platform is not windows fail the test
@@ -35,7 +35,7 @@ namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.Tests
             context.Received().Succeed(requirement);
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot auth with LDAP in GitHub Actions")]
         public async Task HandleRequirementAsync_UserNotInGroup_Fails()
         {
             //if the platform is not windows fail the test

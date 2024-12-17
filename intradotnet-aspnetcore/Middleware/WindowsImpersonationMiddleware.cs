@@ -27,12 +27,14 @@
         /// <returns>A task that represents the completion of request processing.</returns>
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.User.Identity is WindowsIdentity windowsIdentity)
+            if (context != null
+            && context.User != null
+            && context.User.Identity is WindowsIdentity windowsIdentity)
             {
                 // Suppress CA1416 warning
-                #pragma warning disable CA1416
+#pragma warning disable CA1416
                 await WindowsIdentity.RunImpersonated(windowsIdentity.AccessToken, async () => await _next(context));
-                #pragma warning restore CA1416
+#pragma warning restore CA1416
             }
             else
             {
