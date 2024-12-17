@@ -11,7 +11,7 @@
     <PackageId>IntraDotNet.AspNetCore</PackageId>
     <Version>1.0.1</Version>
     <Authors>MegaByteMark</Authors>
-    <Description>A description of your package</Description>
+    <Description>ASP.NET Core polyfill for enabling Windows features when targeting a Windows intranet environment.</Description>
     <PackageTags>aspnet-core;windows</PackageTags>
     <RepositoryUrl>https://github.com/MegaByteMark/intradotnet-aspnetcore</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
