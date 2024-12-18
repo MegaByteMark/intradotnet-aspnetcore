@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 
 namespace IntraDotNet.AspNetCore.Authorization.WindowsGroupMembership.DependencyInjection;
 
@@ -11,21 +10,21 @@ public static class WindowsGroupMembershipAuthorizationDependencyInjectionExtens
 {
     /// <summary>
     /// Adds Windows group membership authorization services to the specified <see cref="IServiceCollection"/>.
-    /// This method reads the configuration settings for the application and configures the authorization policies, requirements, and handlers.
-    /// Before calling this method, the configuration settings must be loaded into the <see cref="IConfiguration"/> object.
     /// You must ensure that the configuration contains Authorization:WindowsGroupMembershipAuthorization. See the example projects for more details.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
+    /// <param name="configureOptions"> A custom function to run to setup the <see cref="WindowsGroupMembershipAuthorizationOptions"/>.</param>
     /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-    public static IServiceCollection AddWindowsGroupMembershipAuthorization(this IServiceCollection services)
+    public static IServiceCollection AddWindowsGroupMembershipAuthorization(this IServiceCollection services, Func<WindowsGroupMembershipAuthorizationOptions> configureOptions)
     {
+        WindowsGroupMembershipAuthorizationOptions options = configureOptions();
+
         // Add the authorization handler to the service collection
         services.AddSingleton<IAuthorizationHandler, WindowsGroupMembershipAuthorizationHandler>();
 
-        // Configure the options for the Windows group membership authorization services
-        services.PostConfigure<WindowsGroupMembershipAuthorizationOptions>(options =>
+        if(options != null && options.Policies != null)
         {
-            // Bind the configuration settings to the options
+            // Add the authorization policies to the service collection
             services.AddAuthorizationCore(configure =>
             {
                 foreach (WindowsGroupMembershipAuthorizationPolicy policy in options.Policies)
@@ -37,7 +36,7 @@ public static class WindowsGroupMembershipAuthorizationDependencyInjectionExtens
                     });
                 }
             });
-        });
+        }
 
         return services;
     }
