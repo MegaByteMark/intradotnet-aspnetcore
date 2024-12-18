@@ -80,11 +80,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-//You must add the configuration here before calling AddWindowsGroupMembershipAuthorization
-builder.Services.Configure<WindowsGroupMembershipAuthorizationOptions>(
-    builder.Configuration.GetSection("Authorization:WindowsGroupMembershipAuthorization"));
-
-builder.Services.AddWindowsGroupMembershipAuthorization();
+builder.Services.AddWindowsGroupMembershipAuthorization(() =>
+{
+  return builder.Configuration.GetSection("Authorization:WindowsGroupMembershipAuthorization").Get<WindowsGroupMembershipAuthorizationOptions>()
+});
 
 var app = builder.Build();
 
