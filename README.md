@@ -28,6 +28,7 @@ To use the Windows Impersonation Middleware, add it to the middleware pipeline i
 using IntraDotNet.AspNetCore.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using IntraDotNet.AspNetCore.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,7 +42,7 @@ var app = builder.Build();
 app.UseAuthentication();
 
 // Add after UseAuthentication, you must have already added Negotiate authentication before calling UseAuthentication.
-app.UseMiddleware<WindowsImpersonationMiddleware>();
+app.UseWindowsImpersonation();
 
 app.UseAuthorization();
 
