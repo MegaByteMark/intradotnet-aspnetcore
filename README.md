@@ -35,7 +35,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme).AddNegotiate();
-builder.Services.AddAuthorization();
+
+//This is to make Windows Auth work on Kestrel.
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = options.DefaultPolicy;
+});
 
 var app = builder.Build();
 
@@ -106,6 +111,16 @@ public class SecureController : ControllerBase
         return Ok("This is a secure endpoint.");
     }
 }
+```
+
+For minimal API:
+```csharp
+app.MapGet("/ping", (HttpContext httpContext) =>
+{
+    var username = httpContext.User.Identity?.Name ?? "Anonymous";
+    return $"pong from {username}";
+})
+.RequireAuthorization("RequireWindowsGroup");
 ```
 
 ## Contributing
