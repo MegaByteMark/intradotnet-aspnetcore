@@ -28,20 +28,26 @@ To use the Windows Impersonation Middleware, add it to the middleware pipeline i
 using IntraDotNet.AspNetCore.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using IntraDotNet.AspNetCore.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme).AddNegotiate();
-builder.Services.AddAuthorization();
+
+//This is to make Windows Auth work on Kestrel.
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = options.DefaultPolicy;
+});
 
 var app = builder.Build();
 
 app.UseAuthentication();
 
 // Add after UseAuthentication, you must have already added Negotiate authentication before calling UseAuthentication.
-app.UseMiddleware<WindowsImpersonationMiddleware>();
+app.UseWindowsImpersonation();
 
 app.UseAuthorization();
 
@@ -105,6 +111,16 @@ public class SecureController : ControllerBase
         return Ok("This is a secure endpoint.");
     }
 }
+```
+
+For minimal API:
+```csharp
+app.MapGet("/ping", (HttpContext httpContext) =>
+{
+    var username = httpContext.User.Identity?.Name ?? "Anonymous";
+    return $"pong from {username}";
+})
+.RequireAuthorization("RequireWindowsGroup");
 ```
 
 ## Contributing

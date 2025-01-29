@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <PackageId>IntraDotNet.AspNetCore</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>MegaByteMark</Authors>
     <Description>ASP.NET Core polyfill for enabling Windows features when targeting a Windows intranet environment.</Description>
     <PackageTags>aspnet-core;windows</PackageTags>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"  />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
