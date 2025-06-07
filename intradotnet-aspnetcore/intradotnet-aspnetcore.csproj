@@ -9,14 +9,15 @@
 
   <PropertyGroup>
     <PackageId>IntraDotNet.AspNetCore</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Authors>MegaByteMark</Authors>
     <Description>ASP.NET Core polyfill for enabling Windows features when targeting a Windows intranet environment.</Description>
-    <PackageTags>aspnet-core;windows</PackageTags>
+    <PackageTags>aspnet-core;dotnet-core;blazor;authentication;authorization;windows;intranet;security;middleware</PackageTags>
     <RepositoryUrl>https://github.com/MegaByteMark/intradotnet-aspnetcore</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/MegaByteMark/intradotnet-aspnetcore</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <AssemblyName>IntraDotNet.AspNetCore</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
